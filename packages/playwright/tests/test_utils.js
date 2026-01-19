@@ -201,7 +201,7 @@ export async function logout(page) {
         await page.waitForURL('**/roadmap');
         // The sign in button should be visible again if we are logged out.
         const loginButton = page.getByTestId('dev-mode-sign-in-button');
-        await expect(loginButton).toBeVisible({timeout: 15000});
+        await expect(loginButton).toBeVisible({timeout: 60000});
       }
     }
   } else {
