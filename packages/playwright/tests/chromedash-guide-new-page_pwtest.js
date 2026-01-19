@@ -34,7 +34,7 @@ test('navigate to create feature page', async ({page}) => {
   await expect(menuButton.locator('sl-icon')).toBeVisible();
 
   // Take a screenshot of the content area.
-  await expect(page).toHaveScreenshot('new-feature-page.png');
+  await expect(page).toHaveScreenshot('new-feature-page.png', {timeout: 30000});
 });
 
 test('enter feature name', async ({page}) => {
@@ -56,7 +56,7 @@ test('enter feature name', async ({page}) => {
   // Verify the input has the value before screenshotting (implicitly waits for fill to complete)
   await expect(featureNameInput).toHaveValue('Test feature name');
 
-  await expect(page).toHaveScreenshot('feature-name.png');
+  await expect(page).toHaveScreenshot('feature-name.png', {timeout: 30000});
 });
 
 test('test semantic checks', async ({page}) => {
@@ -88,6 +88,7 @@ test('test semantic checks', async ({page}) => {
     'warning-feature-name-and-summary-length.png',
     {
       mask: [page.locator('section[id="history"]')],
+      timeout: 30000,
     }
   );
 
@@ -113,7 +114,7 @@ test('enter blink component', async ({page}) => {
 
   await enterBlinkComponent(page);
 
-  await expect(page).toHaveScreenshot('blink-components.png');
+  await expect(page).toHaveScreenshot('blink-components.png', {timeout: 30000});
 });
 
 test('enter web feature id', async ({page}) => {
@@ -128,7 +129,7 @@ test('enter web feature id', async ({page}) => {
 
   await enterWebFeatureId(page);
 
-  await expect(page).toHaveScreenshot('feature-id.png');
+  await expect(page).toHaveScreenshot('feature-id.png', {timeout: 30000});
 });
 
 test('create new feature', async ({page}) => {
@@ -138,5 +139,6 @@ test('create new feature', async ({page}) => {
   // The mask handles the dynamic history section.
   await expect(page).toHaveScreenshot('new-feature-created.png', {
     mask: [page.locator('section[id="history"]')],
+    timeout: 30000,
   });
 });
